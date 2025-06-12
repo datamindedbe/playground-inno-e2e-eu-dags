@@ -21,6 +21,7 @@ default_args = {
 # Define DAG
 with DAG(
     dag_id='k8s_dbt_trino',
+    dag_display_name='🤖 K8s DBT Trino',
     default_args=default_args,
     description='Run a task in a Kubernetes pod using the KubernetesPodOperator',
     schedule_interval=None,
@@ -35,7 +36,7 @@ with DAG(
         image='nilli9990/dbt-trino',
         # cmds=["sh", "-c"],
         labels={"app": "airflow"},
-        name="🤖 run_dbt_trino_task",
+        name="run dbt trino task",
         task_id="run_dbt_trino_task",
         env_vars={
             'TARGET': 'dev',
