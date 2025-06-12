@@ -4,6 +4,8 @@ from airflow import DAG
 from airflow.providers.cncf.kubernetes.operators.pod import KubernetesPodOperator
 from airflow.utils.dates import days_ago
 from datetime import timedelta
+from airflow.models import Variable
+
 # from kubernetes.client import models as k8s
 
 # init_environments = [k8s.V1EnvVar(name="TARGET", value="exoscale")]
@@ -40,6 +42,8 @@ with DAG(
         task_id="run_echo_task",
         env_vars={
             'TARGET': 'exoscale',
+            'AWS_ACCESS_KEY_ID': Variable.get("AWS_ACCESS_KEY_ID"),
+            'AWS_SECRET_ACCESS_KEY': Variable.get("AWS_SECRET_ACCESS_KEY"),
         },
         get_logs=True,
         is_delete_operator_pod=True,  # Clean up after running
