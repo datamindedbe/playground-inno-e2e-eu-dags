@@ -28,7 +28,7 @@ with DAG(
 
     # Define task using KubernetesPodOperator
     run_in_k8s = KubernetesPodOperator(
-        namespace='airflow',  # or your airflow namespace
+        namespace='services',  # or your airflow namespace
         image='nilli9990/dbt-exoscale',
         # cmds=["sh", "-c"],
         arguments=["-target", "exoscale"],
