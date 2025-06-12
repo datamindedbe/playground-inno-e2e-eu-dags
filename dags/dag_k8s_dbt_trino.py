@@ -36,7 +36,7 @@ with DAG(
         image='nilli9990/dbt-trino',
         # cmds=["sh", "-c"],
         labels={"app": "airflow"},
-        name="run dbt trino task",
+        name="run_dbt_trino_task",
         task_id="run_dbt_trino_task",
         env_vars={
             'TARGET': 'dev',
