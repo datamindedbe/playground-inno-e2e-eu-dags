@@ -4,6 +4,9 @@ from airflow import DAG
 from airflow.providers.cncf.kubernetes.operators.pod import KubernetesPodOperator
 from airflow.utils.dates import days_ago
 from datetime import timedelta
+from kubernetes.client import models as k8s
+
+init_environments = [k8s.V1EnvVar(name="TARGET", value="exoscale")]
 
 # Default args for DAG
 default_args = {
@@ -35,6 +38,7 @@ with DAG(
         labels={"app": "airflow"},
         name="example-pod-task",
         task_id="run_echo_task",
+        env=init_environments,
         get_logs=True,
         is_delete_operator_pod=True,  # Clean up after running
     )
