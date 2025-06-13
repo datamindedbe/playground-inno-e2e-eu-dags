@@ -26,7 +26,7 @@ default_args = {
 # Define DAG
 with DAG(
     dag_id='k8s_dbt_trino_upcloud',
-    dag_display_name='🤖 K8s DBT Trino',
+    dag_display_name='🤖 K8s DBT Trino UpCloud',
     default_args=default_args,
     description='Run a task in a Kubernetes pod using the KubernetesPodOperator',
     schedule_interval=None,
