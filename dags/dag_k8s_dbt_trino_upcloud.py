@@ -4,10 +4,8 @@ from airflow.utils.dates import days_ago
 from datetime import timedelta
 from airflow.models import Variable
 from os import environ
-import kubernetes.config
 
-kubernetes.config.load_kube_config()
-kubernetes.client.configuration.Configuration().verify_ssl = False
+
 
 # from kubernetes.client import models as k8s
 
